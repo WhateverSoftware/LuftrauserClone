@@ -4,15 +4,15 @@ Class Structure:
 Main Class:
     LuftrauserGame - class
 Objects:
-    IAirplane -interface
-    UserAirplane -class implements IAirplane
-    EnemyAirplane -class implements IAirplane
+    AAirplane -Abstract Class
+    UserAirplane -class extends AAirplane
+    EnemyAirplane -class extends AAirplane
         ~has an IAirplaneAI to determine actions
-    IShip -interface
+    AShip -Abstract Class
 	~has an IShipAI to determine actions
-    SmallShip -class implements IShip
-    MediumShip -class implements IShip
-    LargeShip -class implements IShip
+    SmallShip -class extends AShip
+    MediumShip -class extends AShip
+    LargeShip -class extends AShip
 AI's:
     IAirplaneAI -interface
     AirplaneAIWeak -class implements IAirplaneAI
