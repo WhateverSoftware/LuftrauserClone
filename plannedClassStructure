@@ -1,0 +1,35 @@
+Class Structure:
+================
+
+Main Class:
+    LuftrauserGame - class
+Objects:
+    IAirplane -interface
+    UserAirplane -class implements IAirplane
+    EnemyAirplane -class implements IAirplane
+        ~has an IAirplaneAI to determine actions
+    IShip -interface
+	~has an IShipAI to determine actions
+    SmallShip -class implements IShip
+    MediumShip -class implements IShip
+    LargeShip -class implements IShip
+AI's:
+    IAirplaneAI -interface
+    AirplaneAIWeak -class implements IAirplaneAI
+    AirplaneAIMedium -class implements IAirplaneAI
+    AirplaneAIStrong -class implements IAirplaneAI
+    IShipAI -interface
+    ShipAIWeak -class implements IShipAI
+    ShipAIMedium -class implements IShipAI
+    ShipAIStrong -class implements IShipAI
+StateManagers:
+    GameTickHandler -class
+        updates all locations, etc.
+    CollissionHandler -class
+        checks for any collissions
+    InputHandler -class
+        checks for any user input
+Other Classes:
+    Graphics classes
+    Projectile -class
+    other?
