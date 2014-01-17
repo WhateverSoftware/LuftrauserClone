@@ -13,6 +13,48 @@ Objects:
     SmallShip -class extends AShip
     MediumShip -class extends AShip
     LargeShip -class extends AShip
+    
+Thomas edit {
+
+i would suggest:
+    Actor - abstract class
+    	Airplane - abstract class extends Actor
+    		Big/Small/Special/User -extends Airplaine
+    	Ship - abstract class extends Actor
+    		Big/Small/Special -extends Ship
+    		
+    Actor has methods like these:
+    	abstract void act()
+    	abstract void draw()
+    	
+    	void move(x, y)
+    	void target(Actor)
+    	void lookAtTarget()
+    	void shootAtTarget(AmmoType)
+    	void setAI(AI)
+    	boolean hasCooldown()
+    	
+    	
+    why?
+    
+    Because all ships float on water, and thus behave like ships. 
+    All airplanes can fly and have their own physics.
+    
+    Like this you can create simple AI:
+    
+    BasicAI implements AI
+    
+    	void act(Actor actor){
+    		World world = actor.getWorld())
+    		actor.lookAtTarget(world.getPlayer())
+    		
+    		if(!actor.hasCooldown()){
+    			actor.shootAtTarget(AmmoType.BULLET);
+    		}
+    	}
+    
+    Ofcourse this is all very basic, but you can easily expand your game or modify your game like this.
+}
 AI's:
     IAirplaneAI -interface
     AirplaneAIWeak -class implements IAirplaneAI
