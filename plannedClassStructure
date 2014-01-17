@@ -4,57 +4,18 @@ Class Structure:
 Main Class:
     LuftrauserGame - class
 Objects:
-    AAirplane -Abstract Class
+    AEntity -Abstract Class
+        ~ extended by all objects that change state
+    AAirplane -Abstract Class extends AEntity
     UserAirplane -class extends AAirplane
     EnemyAirplane -class extends AAirplane
         ~has an IAirplaneAI to determine actions
-    AShip -Abstract Class
+    AShip -Abstract Class extends AEntity
 	~has an IShipAI to determine actions
     SmallShip -class extends AShip
     MediumShip -class extends AShip
     LargeShip -class extends AShip
-    
-Thomas edit {
-
-i would suggest:
-    Actor - abstract class
-    	Airplane - abstract class extends Actor
-    		Big/Small/Special/User -extends Airplaine
-    	Ship - abstract class extends Actor
-    		Big/Small/Special -extends Ship
-    		
-    Actor has methods like these:
-    	abstract void act()
-    	abstract void draw()
-    	
-    	void move(x, y)
-    	void target(Actor)
-    	void lookAtTarget()
-    	void shootAtTarget(AmmoType)
-    	void setAI(AI)
-    	boolean hasCooldown()
-    	
-    	
-    why?
-    
-    Because all ships float on water, and thus behave like ships. 
-    All airplanes can fly and have their own physics.
-    
-    Like this you can create simple AI:
-    
-    BasicAI implements AI
-    
-    	void act(Actor actor){
-    		World world = actor.getWorld())
-    		actor.lookAtTarget(world.getPlayer())
-    		
-    		if(!actor.hasCooldown()){
-    			actor.shootAtTarget(AmmoType.BULLET);
-    		}
-    	}
-    
-    Ofcourse this is all very basic, but you can easily expand your game or modify your game like this.
-}
+    Projectile -class extends AEntity
 AI's:
     IAirplaneAI -interface
     AirplaneAIWeak -class implements IAirplaneAI
@@ -66,12 +27,15 @@ AI's:
     ShipAIStrong -class implements IShipAI
 StateManagers:
     GameTickHandler -class
-        updates all locations, etc.
+        ~updates all locations, etc.
     CollissionHandler -class
-        checks for any collissions
+        ~checks for any collissions
     InputHandler -class
-        checks for any user input
+        ~checks for any user input
+Graphics:
+    ImageLoader -class
+        ~loads images used in the game
+    GraphicsManager -class
+        ~handles drawing all entities, backgrounds, etc
 Other Classes:
-    Graphics classes
-    Projectile -class
     other?
