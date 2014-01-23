@@ -6,16 +6,16 @@ Main Class:
 Objects:
     IEntity - interface
         ~ implemented by all objects that change state
-    AAirplane -Abstract Class extends AEntity
+    AAirplane -Abstract Class implements IEntity
     UserAirplane -class extends AAirplane
     EnemyAirplane -class extends AAirplane
         ~has an IAirplaneAI to determine actions
-    AShip -Abstract Class extends AEntity
+    AShip -Abstract Class implements IEntity
 	~has an IShipAI to determine actions
     SmallShip -class extends AShip
     MediumShip -class extends AShip
     LargeShip -class extends AShip
-    Projectile -class extends AEntity
+    Projectile -class implements IEntity
 AI's:
     IAirplaneAI -interface
     AirplaneAIWeak -class implements IAirplaneAI
