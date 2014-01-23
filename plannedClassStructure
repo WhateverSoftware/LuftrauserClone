@@ -4,8 +4,8 @@ Class Structure:
 Main Class:
     LuftrauserGame - class
 Objects:
-    AEntity -Abstract Class
-        ~ extended by all objects that change state
+    IEntity - interface
+        ~ implemented by all objects that change state
     AAirplane -Abstract Class extends AEntity
     UserAirplane -class extends AAirplane
     EnemyAirplane -class extends AAirplane
