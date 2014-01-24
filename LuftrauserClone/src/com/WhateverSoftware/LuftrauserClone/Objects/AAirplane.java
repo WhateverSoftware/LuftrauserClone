@@ -21,6 +21,10 @@ public abstract class AAirplane implements IEntity {
 		this.y=y;
 		this.directionFacing=directionFacing;
 	}
+	
+	public void update(){
+		//do stuff here
+	}
 
 	public void turnClockwise(){
 		this.directionFacing += this.TURN_SPEED;

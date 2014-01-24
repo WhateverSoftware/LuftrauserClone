@@ -4,10 +4,8 @@ import java.awt.Point;
 
 public abstract class AShip implements IEntity {
 	
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-
+	public void update(){
+		//do stuff
 	}
 
 	@Override
