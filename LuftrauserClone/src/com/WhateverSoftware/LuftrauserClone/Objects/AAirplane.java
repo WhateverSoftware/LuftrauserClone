@@ -54,7 +54,6 @@ public abstract class AAirplane implements IEntity {
 			this.thrust = MAX_THRUST;
 	}
 	
-	@Override
 	public void move() {
 		double radDirection = MathEngine.degreesToRadians(directionMoving);
 		double dx = thrust * Math.cos(radDirection);
