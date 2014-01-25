@@ -1,24 +1,20 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
-import java.awt.Point;
-
+import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntityView;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 
-public abstract class AAirplane implements IEntity {
+public abstract class AAirplane extends AShootingEntity implements IEntity {
 
 	public final int MAX_THRUST = 5;
 	public final int TURN_SPEED = 1; //degrees
 	public final int THRUST_SPEED = 1;
-	
-	private double x;
-	private double y;
+
 	private double thrust;
 	private int directionFacing;
 	private int directionMoving;
 	
-	public AAirplane(int x, int y, int directionFacing){
-		this.x=x;
-		this.y=y;
+	public AAirplane(int x, int y, int directionFacing, IGameTickHandlerEntityView gth){
+		super(x,y,gth);
 		this.directionFacing=directionFacing;
 	}
 	
@@ -58,17 +54,12 @@ public abstract class AAirplane implements IEntity {
 		double radDirection = MathEngine.degreesToRadians(directionMoving);
 		double dx = thrust * Math.cos(radDirection);
 		double dy = thrust * Math.sin(radDirection);
-		this.x += dx;
-		this.y += dy;
+		x += dx;
+		y += dy;
 	}
 	
 	public void shoot(){
 		//unwritten
-	}
-
-	@Override
-	public Point getLocation() {
-		return new Point((int)x,(int)y);
 	}
 
 	@Override

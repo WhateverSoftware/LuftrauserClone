@@ -12,6 +12,12 @@ public class Projectile implements IEntity {
 	private double y;
 	private int direction;
 
+	public Projectile(int x, int y, int direction){
+		this.x=x;
+		this.y=y;
+		this.direction=direction;
+	}
+	
 	@Override
 	public Point getLocation() {
 		return new Point((int)x,(int)y);
