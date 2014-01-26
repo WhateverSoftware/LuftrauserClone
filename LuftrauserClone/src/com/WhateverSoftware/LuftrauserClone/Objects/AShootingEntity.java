@@ -6,22 +6,40 @@ import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntity
 
 public abstract class AShootingEntity implements IEntity {
 	
-	protected double x;
-	protected double y;
+	private final int COOLDOWN_PERIOD; //in ticks
+	private int cooldownCounter;
+	protected boolean coolingDown;
+	protected int x;
+	protected int y;
 	private IGameTickHandlerEntityView gth;
 	
-	public AShootingEntity(int x, int y, IGameTickHandlerEntityView gth){
+	public AShootingEntity(int x, int y, int cooldownPeriod, IGameTickHandlerEntityView gth){
 		this.x=x;
 		this.y=y;
+		this.COOLDOWN_PERIOD=cooldownPeriod;
+		this.cooldownCounter=cooldownPeriod;
+		this.coolingDown=false;
 		this.gth=gth;
 	}
 	
-	public void shoot(int x, int y, int direction){
-		gth.register(new Projectile(x,y,direction));
+	public void shoot(int direction){
+		if(!this.coolingDown){
+			this.gth.register(new Projectile(this.x,this.y,direction));
+			this.coolingDown=true;
+		}
+	}
+	
+	protected void handleCooling(){
+		if(this.cooldownCounter==0){
+			this.coolingDown=false;
+			this.cooldownCounter=this.COOLDOWN_PERIOD;
+		}
+		if(coolingDown)
+			this.cooldownCounter--;
 	}
 	
 	@Override
 	public Point getLocation() {
-		return new Point((int)x,(int)y);
+		return new Point(x,y);
 	}
 }

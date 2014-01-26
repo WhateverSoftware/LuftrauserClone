@@ -5,21 +5,32 @@ import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 
 public abstract class AAirplane extends AShootingEntity implements IEntity {
 
-	public final int MAX_THRUST = 5;
-	public final int TURN_SPEED = 1; //degrees
-	public final int THRUST_SPEED = 1;
+	private final int MAX_THRUST = 5;
+	private final int TURN_SPEED = 1; //degrees
+	private final int THRUST_SPEED = 1;
 
 	private double thrust;
 	private int directionFacing;
 	private int directionMoving;
+	private int health;
 	
-	public AAirplane(int x, int y, int directionFacing, IGameTickHandlerEntityView gth){
-		super(x,y,gth);
+	public AAirplane(int x, int y, int directionFacing, int cooldownPeriod, int health, IGameTickHandlerEntityView gth){
+		super(x,y,cooldownPeriod,gth);
 		this.directionFacing=directionFacing;
+		this.health=health;
 	}
 	
-	public void update(){
-		//do stuff here
+	protected void update(boolean shouldThrust, boolean shouldTurnC, boolean shouldTurnCC, boolean shouldShoot){
+		super.handleCooling();
+		if(shouldThrust)
+			this.thrust();
+		if(shouldTurnC)
+			this.turnClockwise();
+		if(shouldTurnCC)
+			this.turnCounterClockwise();
+		if(shouldShoot)
+			super.shoot(this.directionFacing);
+		this.move();		
 	}
 
 	public void turnClockwise(){
@@ -58,10 +69,14 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 		y += dy;
 	}
 	
-	public void shoot(){
-		//unwritten
+	public void adjustHealth(int adjustment){
+		this.health += adjustment;
 	}
-
+	
+	public int getHealth(){
+		return this.health;
+	}
+	
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
