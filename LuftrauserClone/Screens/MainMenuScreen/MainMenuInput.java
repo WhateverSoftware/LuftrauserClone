@@ -1,9 +1,9 @@
-package com.WhateverSoftware.LuftrauserClone.StateManagers;
+package MainMenuScreen;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
-public class InputHandler extends InputListener {
+public class MainMenuInput extends InputListener {
 	public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 		return true;
 	}
@@ -17,7 +17,6 @@ public class InputHandler extends InputListener {
 	}
 
 	public boolean keyTyped(InputEvent event, char character) {
-
 		return true;
 	}
 }
