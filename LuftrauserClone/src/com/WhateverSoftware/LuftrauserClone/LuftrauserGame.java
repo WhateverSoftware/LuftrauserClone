@@ -4,6 +4,7 @@ import LoadingScreen.LoadingScreen;
 
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 
 public class LuftrauserGame extends Game {
@@ -11,6 +12,7 @@ public class LuftrauserGame extends Game {
 
 	@Override
 	public void create() {
+		Gdx.app.log("LuftrauserGame:Create", "Start");
 		LuftrauserGame.game = this;
 		Assets.assetManager = new AssetManager();
 
