@@ -5,73 +5,51 @@ import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 public abstract class AAirplane extends AShootingEntity implements IEntity {
 
 	private final int MAX_THRUST = 5;
-	private final int TURN_SPEED = 1; //degrees
 	private final int THRUST_SPEED = 1;
 
-	private double thrust;
-	private int directionFacing;
-	private int directionMoving;
-	private int health;
 	private boolean isThrusting = false;
 	
 	public AAirplane(int x, int y, int directionFacing, int cooldownPeriod, int health){
-		super(x,y,cooldownPeriod);
-		this.directionFacing=directionFacing;
-		this.health=health;
+		super(x,y,cooldownPeriod,directionFacing,health);
 	}
 	
+	/**
+	 * Call all of the actions that need to be performed in a game tick.
+	 */
 	public void update(){
 		super.handleCooling();
-		if(isThrusting)
-			this.thrust();
-		//conditional not needed because of how the function works
 		this.turn();
-		shoot(this.directionFacing);
-		this.move();		
+		this.thrust();
+		this.move();
+		if(isShooting)
+			shoot(this.directionFacing);	
 	}
 	
+	/**
+	 * Toggle whether the plane is thrusting or not.
+	 * @param thrusting - Set to true to have the plane thrust and false otherwise.
+	 */
 	public void setThrust(boolean thrusting) {
 		isThrusting = thrusting;
 	}
-
-	public void turn(){
-		this.directionFacing += (this.TURN_SPEED*this.turnDirection);
-	}
 	
+	/**
+	 * Handles one tick of thrust for the plane.
+	 * If the plane is currently thrusting, the velocity will be increased in the direction the plane is facing.
+	 */
 	public void thrust(){
+		if(!isThrusting) return;
+		
+		//use directionFacing to figure out the 
 		double radDirectionFacing = MathEngine.degreesToRadians(directionFacing);
-		double radDirectionMoving = MathEngine.degreesToRadians(directionMoving);
-		double currentThrustPartialX = this.thrust * Math.cos(radDirectionMoving);
-		double currentThrustPartialY = this.thrust * Math.sin(radDirectionMoving);
 		double newThrustPartialX = this.THRUST_SPEED * Math.cos(radDirectionFacing);
 		double newThrustPartialY = this.THRUST_SPEED * Math.sin(radDirectionFacing);
-		newThrustPartialX += currentThrustPartialX;
-		newThrustPartialY += currentThrustPartialY;
-		this.directionMoving = (int)Math.atan(newThrustPartialY/newThrustPartialX);
+		velx += newThrustPartialX;
+		vely += newThrustPartialY;
 		
-		//handles quadrant issues with Math.atan()
-		if(newThrustPartialX<0)
-			directionMoving += 180; 
-		
-		this.thrust = MathEngine.pythagorean(newThrustPartialX,newThrustPartialY);
-		if(this.thrust>this.MAX_THRUST)
-			this.thrust = MAX_THRUST;
-	}
-	
-	public void move() {
-		double radDirection = MathEngine.degreesToRadians(directionMoving);
-		double dx = thrust * Math.cos(radDirection);
-		double dy = thrust * Math.sin(radDirection);
-		x += dx;
-		y += dy;
-	}
-	
-	public void adjustHealth(int adjustment){
-		this.health += adjustment;
-	}
-	
-	public int getHealth(){
-		return this.health;
+		//limit velocity
+		if(velx > MAX_THRUST) velx = MAX_THRUST;
+		if(vely > MAX_THRUST) vely = MAX_THRUST;
 	}
 	
 	@Override

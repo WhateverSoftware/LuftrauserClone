@@ -2,48 +2,29 @@ package com.WhateverSoftware.LuftrauserClone.Objects;
 
 public abstract class AShip extends AShootingEntity implements IEntity {
 	
-	private final int TURN_SPEED = 1; //degrees
-	
-	private int directionFacing;
-	private int health;
-	private int speed;
-	private int moveDirection = 0;
-	
 	public AShip(int x, int y, int speed, int directionFacing, int cooldownPeriod, int health){
-		super(x,y,cooldownPeriod);
-		this.directionFacing=directionFacing;
-		this.health=health;
-		this.speed=speed;
+		super(x,y,cooldownPeriod,directionFacing,health);
+		this.velx=speed;
 	}
 	
+	/**
+	 * Call all of the actions that need to be performed in a game tick.
+	 */
 	public void update(){
 		super.handleCooling();
-		this.move();
 		this.turn();
+		this.move();
 		if(isShooting)
 			super.shoot(this.directionFacing);
-		this.move();		
 	}
 	
+	/**
+	 * Changes the direction of movement for the ship.
+	 * @param direction - Indicates which direction the ship will move. Only accepts 0, 1 (for right), and -1 (for left).
+	 */
 	public void setMoveDirection(int direction) {
 		if(direction == 1 || direction == -1 || direction == 0)
-			moveDirection = direction;
-	}
-
-	public void turn(){
-		this.directionFacing += (this.TURN_SPEED*this.turnDirection);
-	}
-	
-	private void move(){
-		this.x += (this.speed*moveDirection);
-	}
-	
-	public void adjustHealth(int adjustment){
-		this.health += adjustment;
-	}
-	
-	public int getHealth(){
-		return this.health;
+			velx *= direction;
 	}
 	
 	@Override
