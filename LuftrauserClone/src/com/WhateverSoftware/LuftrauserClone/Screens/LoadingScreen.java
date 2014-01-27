@@ -36,7 +36,7 @@ public class LoadingScreen implements Screen {
 			// All assets are loaded - move to next screen
 			Gdx.app.log("LoadingScreen:AssetCheck", "Asset Loading Complete");
 
-			LuftrauserGame.game.setScreen(new MainMenuScreen());
+			LuftrauserGame.game.setScreen(new GameScreen());
 		}
 	}
 
