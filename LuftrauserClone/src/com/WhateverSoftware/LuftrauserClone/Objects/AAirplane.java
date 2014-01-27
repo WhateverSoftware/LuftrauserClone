@@ -21,8 +21,7 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 		this.turn();
 		this.thrust();
 		this.move();
-		if(isShooting)
-			shoot(this.directionFacing);	
+		shoot(this.directionFacing);	
 	}
 	
 	/**

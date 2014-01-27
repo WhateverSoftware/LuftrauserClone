@@ -14,8 +14,7 @@ public abstract class AShip extends AShootingEntity implements IEntity {
 		super.handleCooling();
 		this.turn();
 		this.move();
-		if(isShooting)
-			super.shoot(this.directionFacing);
+		shoot(this.directionFacing);
 	}
 	
 	/**
