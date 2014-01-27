@@ -11,6 +11,8 @@ public abstract class AShootingEntity implements IEntity {
 	protected boolean coolingDown;
 	protected int x;
 	protected int y;
+	protected int turnDirection = 0;
+	protected boolean isShooting = false;
 	private IGameTickHandlerEntityView gth;
 	
 	public AShootingEntity(int x, int y, int cooldownPeriod, IGameTickHandlerEntityView gth){
@@ -42,4 +44,14 @@ public abstract class AShootingEntity implements IEntity {
 	public Point getLocation() {
 		return new Point(x,y);
 	}
+	
+	public void setTurning(int direction) {
+		if(direction == 1 || direction == -1 || direction == 0)
+			turnDirection = direction;
+	}
+	
+	public void setShooting(boolean shooting) {
+		isShooting = shooting;
+	}
 }
+

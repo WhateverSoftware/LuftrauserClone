@@ -13,6 +13,9 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	private int directionFacing;
 	private int directionMoving;
 	private int health;
+	private boolean isThrusting = false;
+	private int turnDirection = 0;
+	private boolean isShooting = false;
 	
 	public AAirplane(int x, int y, int directionFacing, int cooldownPeriod, int health, IGameTickHandlerEntityView gth){
 		super(x,y,cooldownPeriod,gth);
@@ -20,25 +23,23 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 		this.health=health;
 	}
 	
-	protected void update(boolean shouldThrust, boolean shouldTurnC, boolean shouldTurnCC, boolean shouldShoot){
+	public void update(){
 		super.handleCooling();
-		if(shouldThrust)
+		if(isThrusting)
 			this.thrust();
-		if(shouldTurnC)
-			this.turnClockwise();
-		if(shouldTurnCC)
-			this.turnCounterClockwise();
-		if(shouldShoot)
+		//conditional not needed because of how the function works
+		this.turn();
+		if(isShooting)
 			super.shoot(this.directionFacing);
 		this.move();		
 	}
-
-	public void turnClockwise(){
-		this.directionFacing += this.TURN_SPEED;
-	}
 	
-	public void turnCounterClockwise(){
-		this.directionFacing -= this.TURN_SPEED;
+	public void setThrust(boolean thrusting) {
+		isThrusting = thrusting;
+	}
+
+	public void turn(){
+		this.directionFacing += (this.TURN_SPEED*this.turnDirection);
 	}
 	
 	public void thrust(){

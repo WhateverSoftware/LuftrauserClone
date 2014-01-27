@@ -9,6 +9,7 @@ public abstract class AShip extends AShootingEntity implements IEntity {
 	private int directionFacing;
 	private int health;
 	private int speed;
+	private int moveDirection = 0;
 	
 	public AShip(int x, int y, int speed, int directionFacing, int cooldownPeriod, int health, IGameTickHandlerEntityView gth){
 		super(x,y,cooldownPeriod,gth);
@@ -17,33 +18,26 @@ public abstract class AShip extends AShootingEntity implements IEntity {
 		this.speed=speed;
 	}
 	
-	protected void update(boolean shouldMoveLeft, boolean shouldMoveRight, boolean shouldTurnC, boolean shouldTurnCC, boolean shouldShoot){
-		if(shouldMoveLeft)
-			this.moveLeft();
-		if(shouldMoveRight)
-			this.moveRight();
-		if(shouldTurnC)
-			this.turnClockwise();
-		if(shouldTurnCC)
-			this.turnCounterClockwise();
-		if(shouldShoot)
+	public void update(){
+		super.handleCooling();
+		this.move();
+		this.turn();
+		if(isShooting)
 			super.shoot(this.directionFacing);
+		this.move();		
 	}
 	
-	private void moveLeft(){
-		this.x -= this.speed;
+	public void setMoveDirection(int direction) {
+		if(direction == 1 || direction == -1 || direction == 0)
+			moveDirection = direction;
+	}
+
+	public void turn(){
+		this.directionFacing += (this.TURN_SPEED*this.turnDirection);
 	}
 	
-	private void moveRight(){
-		this.x += this.speed;
-	}
-	
-	private void turnClockwise(){
-		this.directionFacing += this.TURN_SPEED;
-	}
-	
-	private void turnCounterClockwise(){
-		this.directionFacing -= this.TURN_SPEED;
+	private void move(){
+		this.x += (this.speed*moveDirection);
 	}
 	
 	public void adjustHealth(int adjustment){
