@@ -2,7 +2,10 @@ package com.WhateverSoftware.LuftrauserClone.Objects;
 
 import java.awt.Point;
 
+import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Projectile implements IEntity {
 	
@@ -24,9 +27,11 @@ public class Projectile implements IEntity {
 	}
 
 	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-		// something with graphics manager
+	public void draw(SpriteBatch batch) {
+		// will need some way to differentiate between projectile textures
+		
+		// Math here to rotate texture to match angle
+		batch.draw(Assets.assetManager.get("Boats/ship1.png", Texture.class), (float)x, (float)y);
 	}
 
 	@Override

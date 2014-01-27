@@ -1,6 +1,9 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
+import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class AAirplane extends AShootingEntity implements IEntity {
 
@@ -52,8 +55,10 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	}
 	
 	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-		// Call static method in class: GraphicsManager
+	public void draw(SpriteBatch batch) {
+		// will need some way to differentiate between plane textures
+		
+		// Math here to rotate texture to match angle
+		batch.draw(Assets.assetManager.get("Planes/plane2.png", Texture.class), x, y);
 	}
 }

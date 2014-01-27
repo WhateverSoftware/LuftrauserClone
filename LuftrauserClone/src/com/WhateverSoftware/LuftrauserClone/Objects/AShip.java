@@ -1,5 +1,9 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
+import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public abstract class AShip extends AShootingEntity implements IEntity {
 	
 	public AShip(int x, int y, int speed, int directionFacing, int cooldownPeriod, int health){
@@ -27,9 +31,11 @@ public abstract class AShip extends AShootingEntity implements IEntity {
 	}
 	
 	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-
+	public void draw(SpriteBatch batch) {
+		// will need some way to differentiate between boat textures
+		
+		// Math here to rotate texture to match direction facing
+		batch.draw(Assets.assetManager.get("Boats/ship1.png", Texture.class), x, y);
 	}
 
 }
