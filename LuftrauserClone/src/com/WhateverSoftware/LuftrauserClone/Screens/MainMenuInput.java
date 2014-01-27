@@ -1,4 +1,4 @@
-package MainMenuScreen;
+package com.WhateverSoftware.LuftrauserClone.Screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;

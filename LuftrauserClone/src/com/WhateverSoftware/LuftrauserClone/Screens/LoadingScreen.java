@@ -1,6 +1,5 @@
-package LoadingScreen;
+package com.WhateverSoftware.LuftrauserClone.Screens;
 
-import MainMenuScreen.MainMenuScreen;
 
 import com.WhateverSoftware.LuftrauserClone.LuftrauserGame;
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
