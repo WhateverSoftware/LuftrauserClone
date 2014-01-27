@@ -1,7 +1,5 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
-import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntityView;
-
 public abstract class AShip extends AShootingEntity implements IEntity {
 	
 	private final int TURN_SPEED = 1; //degrees
@@ -11,8 +9,8 @@ public abstract class AShip extends AShootingEntity implements IEntity {
 	private int speed;
 	private int moveDirection = 0;
 	
-	public AShip(int x, int y, int speed, int directionFacing, int cooldownPeriod, int health, IGameTickHandlerEntityView gth){
-		super(x,y,cooldownPeriod,gth);
+	public AShip(int x, int y, int speed, int directionFacing, int cooldownPeriod, int health){
+		super(x,y,cooldownPeriod);
 		this.directionFacing=directionFacing;
 		this.health=health;
 		this.speed=speed;

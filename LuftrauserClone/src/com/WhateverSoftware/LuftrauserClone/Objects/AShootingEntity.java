@@ -15,17 +15,21 @@ public abstract class AShootingEntity implements IEntity {
 	protected boolean isShooting = false;
 	private IGameTickHandlerEntityView gth;
 	
-	public AShootingEntity(int x, int y, int cooldownPeriod, IGameTickHandlerEntityView gth){
+	public AShootingEntity(int x, int y, int cooldownPeriod){
 		this.x=x;
 		this.y=y;
 		this.COOLDOWN_PERIOD=cooldownPeriod;
 		this.cooldownCounter=cooldownPeriod;
 		this.coolingDown=false;
-		this.gth=gth;
+	}
+	
+	public void setGameTickHandler(IGameTickHandlerEntityView gth) {
+		this.gth = gth;
+		gth.register(this);
 	}
 	
 	public void shoot(int direction){
-		if(!this.coolingDown){
+		if(!this.coolingDown && isShooting){
 			this.gth.register(new Projectile(this.x,this.y,direction));
 			this.coolingDown=true;
 		}

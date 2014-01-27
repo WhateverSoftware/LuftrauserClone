@@ -1,6 +1,5 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
-import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntityView;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 
 public abstract class AAirplane extends AShootingEntity implements IEntity {
@@ -14,11 +13,9 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	private int directionMoving;
 	private int health;
 	private boolean isThrusting = false;
-	private int turnDirection = 0;
-	private boolean isShooting = false;
 	
-	public AAirplane(int x, int y, int directionFacing, int cooldownPeriod, int health, IGameTickHandlerEntityView gth){
-		super(x,y,cooldownPeriod,gth);
+	public AAirplane(int x, int y, int directionFacing, int cooldownPeriod, int health){
+		super(x,y,cooldownPeriod);
 		this.directionFacing=directionFacing;
 		this.health=health;
 	}
@@ -29,8 +26,7 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 			this.thrust();
 		//conditional not needed because of how the function works
 		this.turn();
-		if(isShooting)
-			super.shoot(this.directionFacing);
+		shoot(this.directionFacing);
 		this.move();		
 	}
 	
