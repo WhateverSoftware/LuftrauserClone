@@ -6,11 +6,12 @@ Main Class:
 Objects:
     IEntity - interface
         ~ implemented by all objects that change state
-    AAirplane -Abstract Class implements IEntity
+    AShootingEntity - Abstract class implements IEntity
+    AAirplane -Abstract Class extends AShootingEntity 
     UserAirplane -class extends AAirplane
     EnemyAirplane -class extends AAirplane
         ~has an IAirplaneAI to determine actions
-    AShip -Abstract Class implements IEntity
+    AShip -Abstract Class extends AShootingEntity
 	~has an IShipAI to determine actions
     SmallShip -class extends AShip
     MediumShip -class extends AShip
@@ -26,14 +27,16 @@ AI's:
     ShipAIMedium -class implements IShipAI
     ShipAIStrong -class implements IShipAI
 StateManagers:
+    IGameTickHandlerEntityView -interface
+        ~hides methods of GameTickHandler that entity's should not have access tof
     GameTickHandler -class
         ~updates all locations, etc.
     CollissionHandler -class
         ~checks for any collissions
-    InputHandler -class
+    KeyInputHandler -class
         ~checks for any user input
 Graphics:
-    ImageLoader -class
+    Assets -class
         ~loads images used in the game
     GraphicsManager -class
         ~handles drawing all entities, backgrounds, etc
