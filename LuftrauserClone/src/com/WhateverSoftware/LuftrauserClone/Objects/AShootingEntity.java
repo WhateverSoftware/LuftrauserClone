@@ -12,8 +12,8 @@ public abstract class AShootingEntity implements IEntity {
 	protected boolean coolingDown;
 	protected int x;
 	protected int y;
-	protected int velx;
-	protected int vely;
+	protected double velx;
+	protected double vely;
 	protected int directionFacing;
 	protected int turnDirection = 0;
 	protected boolean isShooting = false;
