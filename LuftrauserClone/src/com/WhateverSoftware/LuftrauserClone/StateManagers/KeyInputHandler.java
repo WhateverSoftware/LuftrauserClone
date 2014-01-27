@@ -3,6 +3,8 @@ package com.WhateverSoftware.LuftrauserClone.StateManagers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.WhateverSoftware.LuftrauserClone.Objects.UserAirplane;
+
 public class KeyInputHandler implements KeyListener {	
 
 	private UserAirplane airplane;
@@ -13,7 +15,7 @@ public class KeyInputHandler implements KeyListener {
 		this.acceptingData=acceptingData;
 	}
 
-	public boolean setAcceptingData(boolean acceptingData){
+	public void setAcceptingData(boolean acceptingData){
 		this.acceptingData=acceptingData;
 	}
 
@@ -24,16 +26,16 @@ public class KeyInputHandler implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if(acceptingData){
 			if(e.getKeyCode() == KeyEvent.VK_X) {
-				this.airplane.setIsShooting(true);
+				this.airplane.setShooting(true);
 			}
 			else if(e.getKeyCode() == KeyEvent.VK_UP) {
-				this.airplane.setIsThrusting(true);
+				this.airplane.setThrust(true);
 			}
 			else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-				this.airplane.setTurningCC(true);
+				this.airplane.setTurning(-1);
 			}
 			else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				this.airplane.setTurningC(true);
+				this.airplane.setTurning(1);
 			}
 		}
 	}
@@ -42,16 +44,13 @@ public class KeyInputHandler implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if(acceptingData){
 			if(e.getKeyCode() == KeyEvent.VK_X) {
-				this.airplane.setIsShooting(false);
+				this.airplane.setShooting(false);
 			}
 			else if(e.getKeyCode() == KeyEvent.VK_UP) {
-				this.airplane.setIsThrusting(false);
+				this.airplane.setThrust(false);
 			}
-			else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-				this.airplane.setTurningCC(false);
-			}
-			else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				this.airplane.setTurningC(false);
+			else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				this.airplane.setTurning(0);
 			}
 		}
 	}
