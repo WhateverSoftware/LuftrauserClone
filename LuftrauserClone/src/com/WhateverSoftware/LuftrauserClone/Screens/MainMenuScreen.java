@@ -1,4 +1,4 @@
-package MainMenuScreen;
+package com.WhateverSoftware.LuftrauserClone.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
