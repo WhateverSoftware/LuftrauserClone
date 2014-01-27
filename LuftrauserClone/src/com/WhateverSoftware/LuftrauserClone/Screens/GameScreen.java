@@ -1,17 +1,28 @@
 package com.WhateverSoftware.LuftrauserClone.Screens;
 
+import com.WhateverSoftware.LuftrauserClone.StateManagers.GameTickHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen implements Screen {
 	SpriteBatch batch;
+	OrthographicCamera camera;
+
+	GameTickHandler gameTickHandler;
 
 	@Override
 	public void show() {
 		Gdx.app.log("GameScreen:Show", "Creating Screen");
+		
 		batch = new SpriteBatch();
+		gameTickHandler = new GameTickHandler();
+
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
+		camera.update();
 	}
 
 	@Override
@@ -22,9 +33,11 @@ public class GameScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 		batch.begin();
 
-		// Code to push update and draw commands go here
+		gameTickHandler.updateEntities();
+		gameTickHandler.drawEntities(batch);
 
 		batch.end();
 	}
