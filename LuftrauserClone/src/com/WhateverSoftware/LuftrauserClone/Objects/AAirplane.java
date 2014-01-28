@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class AAirplane extends AShootingEntity implements IEntity {
 
+	public static final int MAX_VELOCITY = 5;
+	
 	private final int THRUST_SPEED = 1;
 
 	private boolean isThrusting = false;
