@@ -31,7 +31,7 @@ public class MathEngine {
 	 * @param direction - angle in degrees of the plane's orientation
 	 * @return Store the x-component and y-component of new velocity in a Point2D.Double object
 	 */
-	public static double calcVelocity(double velx, double vely, double thrust, int direction) {
+	public static Point2D.double calcVelocity(double velx, double vely, double thrust, int direction) {
 		double radDirectionFacing = MathEngine.degreesToRadians(direction);
 		double thrustX = thrust * Math.cos(radDirectionFacing);
 		double thrustY = thrust * Math.sin(radDirectionFacing);
