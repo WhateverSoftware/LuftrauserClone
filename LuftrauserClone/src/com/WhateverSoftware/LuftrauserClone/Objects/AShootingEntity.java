@@ -78,7 +78,7 @@ public abstract class AShootingEntity implements IEntity {
 	
 	/**
 	 * This method turns the cannon for a ship.
-	 * For the plane, it turns the nose (so also the direction of movement is changed).
+	 * For the plane, it turns the nose (so it also determines the change of movement on thrust).
 	 */
 	public void turn(){
 		this.directionFacing += (this.TURN_SPEED*this.turnDirection);

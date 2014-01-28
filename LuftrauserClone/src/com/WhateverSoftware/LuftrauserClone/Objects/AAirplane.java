@@ -1,5 +1,7 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
+import java.awt.geom.Point2D;
+
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 import com.badlogic.gdx.graphics.Texture;
@@ -7,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class AAirplane extends AShootingEntity implements IEntity {
 
-	private final int MAX_THRUST = 5;
 	private final int THRUST_SPEED = 1;
 
 	private boolean isThrusting = false;
@@ -42,16 +43,9 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	public void thrust(){
 		if(!isThrusting) return;
 		
-		//use directionFacing to figure out the 
-		double radDirectionFacing = MathEngine.degreesToRadians(directionFacing);
-		double newThrustPartialX = this.THRUST_SPEED * Math.cos(radDirectionFacing);
-		double newThrustPartialY = this.THRUST_SPEED * Math.sin(radDirectionFacing);
-		velx += newThrustPartialX;
-		vely += newThrustPartialY;
-		
-		//limit velocity
-		if(velx > MAX_THRUST) velx = MAX_THRUST;
-		if(vely > MAX_THRUST) vely = MAX_THRUST;
+		Point2D.Double temp = MathEngine.calcVelocity(velx, velx, THRUST_SPEED, directionFacing);
+		velx += temp.getX();
+		vely += temp.getY();
 	}
 	
 	@Override
