@@ -2,6 +2,8 @@ package com.WhateverSoftware.LuftrauserClone.Toolbox;
 
 import java.awt.geom.Point2D;
 
+import com.WhateverSoftware.LuftrauserClone.Objects.AAirplane;
+
 public class MathEngine {
 	//I'm just guessing with these. They can be adjusted once we get a visual representation working.
 	private static final double friction = 0.2;
@@ -31,7 +33,7 @@ public class MathEngine {
 	 * @param direction - angle in degrees of the plane's orientation
 	 * @return Store the x-component and y-component of new velocity in a Point2D.Double object
 	 */
-	public static Point2D.double calcVelocity(double velx, double vely, double thrust, int direction) {
+	public static Point2D.Double calcVelocity(double velx, double vely, double thrust, int direction) {
 		double radDirectionFacing = MathEngine.degreesToRadians(direction);
 		double thrustX = thrust * Math.cos(radDirectionFacing);
 		double thrustY = thrust * Math.sin(radDirectionFacing);
@@ -46,7 +48,7 @@ public class MathEngine {
 		
 		//scale to max_magnitude
 		int maxMagnitude = AAirplane.MAX_VELOCITY;
-		int currentMagnitude = pythagorean(velx,vely);
+		int currentMagnitude = (int)pythagorean(velx,vely);
 		if(currentMagnitude>maxMagnitude){
 			velx = velx / currentMagnitude * maxMagnitude;
 			vely = vely / currentMagnitude * maxMagnitude;
