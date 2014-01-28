@@ -1,6 +1,7 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 
 import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntityView;
 
@@ -103,6 +104,18 @@ public abstract class AShootingEntity implements IEntity, IShootingEntityAIView{
 	
 	public int getHealth(){
 		return this.health;
+	}
+	
+	public int getCooldownPeriod(){
+		return this.COOLDOWN_PERIOD;
+	}
+	
+	public boolean isCooling(){
+		return this.coolingDown;
+	}
+	
+	public Point2D.Double getVelocity(){
+		return new Point2D.Double(this.velx,this.vely);
 	}
 }
 

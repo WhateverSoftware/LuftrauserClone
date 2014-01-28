@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Projectile implements IEntity {
 	
-	private final int PROJECTILE_SPEED = 10;
+	public static final int PROJECTILE_SPEED = 10;
 	
 	private double x;
 	private double y;
@@ -41,8 +41,8 @@ public class Projectile implements IEntity {
 
 	public void move(){
 		double radDirection = MathEngine.degreesToRadians(direction);
-		this.x += this.PROJECTILE_SPEED * Math.cos(radDirection);
-		this.y += this.PROJECTILE_SPEED * Math.sin(radDirection);
+		this.x += Projectile.PROJECTILE_SPEED * Math.cos(radDirection);
+		this.y += Projectile.PROJECTILE_SPEED * Math.sin(radDirection);
 	}
 
 }
