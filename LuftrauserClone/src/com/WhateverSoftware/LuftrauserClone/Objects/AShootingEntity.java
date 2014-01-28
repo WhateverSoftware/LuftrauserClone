@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntityView;
 
-public abstract class AShootingEntity implements IEntity {
+public abstract class AShootingEntity implements IEntity, IShootingEntityAIView{
 	
 	protected final int TURN_SPEED = 1; //degrees
 	private final int COOLDOWN_PERIOD; //in ticks
@@ -56,6 +56,11 @@ public abstract class AShootingEntity implements IEntity {
 	@Override
 	public Point getLocation() {
 		return new Point(x,y);
+	}
+	
+	@Override
+	public int getDirectionFacing(){
+		return this.directionFacing;
 	}
 	
 	/**

@@ -25,7 +25,8 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	public void update(){
 		super.handleCooling();
 		this.turn();
-		this.thrust();
+		if(this.isThrusting)
+			this.thrust();
 		this.move();
 		shoot(this.directionFacing);	
 	}
@@ -42,9 +43,7 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	 * Handles one tick of thrust for the plane.
 	 * If the plane is currently thrusting, the velocity will be increased in the direction the plane is facing.
 	 */
-	public void thrust(){
-		if(!isThrusting) return;
-		
+	public void thrust(){		
 		Point2D.Double temp = MathEngine.calcVelocity(velx, velx, THRUST_SPEED, directionFacing);
 		velx += temp.getX();
 		vely += temp.getY();
