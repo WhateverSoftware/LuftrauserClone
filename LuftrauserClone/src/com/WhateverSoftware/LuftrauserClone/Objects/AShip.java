@@ -1,13 +1,11 @@
 package com.WhateverSoftware.LuftrauserClone.Objects;
 
-import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.WhateverSoftware.LuftrauserClone.AI.IAI;
 
-public abstract class AShip extends AShootingEntity implements IEntity {
+public abstract class AShip extends AAutomatedShootingEntity{
 	
-	public AShip(int x, int y, int speed, int directionFacing, int cooldownPeriod, int health){
-		super(x,y,cooldownPeriod,directionFacing,health);
+	public AShip(int x, int y, IAI ai, int speed, int directionFacing, int cooldownPeriod, int health){
+		super(x,y,ai, cooldownPeriod,directionFacing,health);
 		this.velx=speed;
 	}
 	
@@ -28,14 +26,6 @@ public abstract class AShip extends AShootingEntity implements IEntity {
 	public void setMoveDirection(int direction) {
 		if(direction == 1 || direction == -1 || direction == 0)
 			velx *= direction;
-	}
-	
-	@Override
-	public void draw(SpriteBatch batch) {
-		// will need some way to differentiate between boat textures
-		
-		// Math here to rotate texture to match direction facing
-		batch.draw(Assets.assetManager.get("Boats/ship1.png", Texture.class), x, y);
 	}
 
 }
