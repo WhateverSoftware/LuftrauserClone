@@ -92,7 +92,7 @@ public class MathEngine {
 				ticks2=(int)(distance2/velocity2);
 			x1 += dx1;
 			x2 += dy1;
-		}while(!Math.abs(ticks1-ticks2)<=1);
+		}while(!(Math.abs(ticks1-ticks2)<=1));
 		Point projectedLocation = new Point((int)sharedLocation.getX(),(int)sharedLocation.getY());
 		return projectedLocation;
 	}
