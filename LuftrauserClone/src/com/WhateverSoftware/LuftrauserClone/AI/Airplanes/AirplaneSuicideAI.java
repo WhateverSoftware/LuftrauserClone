@@ -1,4 +1,4 @@
-package com.WhateverSoftware.LuftrauserClone.AI;
+package com.WhateverSoftware.LuftrauserClone.AI.Airplanes;
 
 import java.awt.Point;
 

@@ -1,8 +1,10 @@
-package com.WhateverSoftware.LuftrauserClone.Objects;
+package com.WhateverSoftware.LuftrauserClone.Objects.Airplanes;
 
 import java.awt.geom.Point2D;
 
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
+import com.WhateverSoftware.LuftrauserClone.Objects.AShootingEntity;
+import com.WhateverSoftware.LuftrauserClone.Objects.IEntity;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

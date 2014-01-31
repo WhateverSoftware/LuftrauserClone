@@ -1,4 +1,5 @@
-package com.WhateverSoftware.LuftrauserClone.Objects;
+package com.WhateverSoftware.LuftrauserClone.Objects.Airplanes;
+
 
 public class UserAirplane extends AAirplane {
 

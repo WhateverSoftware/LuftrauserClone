@@ -3,7 +3,7 @@ package com.WhateverSoftware.LuftrauserClone.Toolbox;
 import java.awt.Point;
 import java.awt.geom.Point2D;
 
-import com.WhateverSoftware.LuftrauserClone.Objects.AAirplane;
+import com.WhateverSoftware.LuftrauserClone.Objects.Airplanes.AAirplane;
 
 public class MathEngine {
 	//I'm just guessing with these. They can be adjusted once we get a visual representation working.

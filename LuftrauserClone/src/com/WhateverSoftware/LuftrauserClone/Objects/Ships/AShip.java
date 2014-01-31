@@ -1,6 +1,7 @@
-package com.WhateverSoftware.LuftrauserClone.Objects;
+package com.WhateverSoftware.LuftrauserClone.Objects.Ships;
 
 import com.WhateverSoftware.LuftrauserClone.AI.IAI;
+import com.WhateverSoftware.LuftrauserClone.Objects.AAutomatedShootingEntity;
 
 public abstract class AShip extends AAutomatedShootingEntity{
 	

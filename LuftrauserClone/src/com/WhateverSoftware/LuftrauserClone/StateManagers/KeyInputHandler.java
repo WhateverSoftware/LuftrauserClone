@@ -3,7 +3,7 @@ package com.WhateverSoftware.LuftrauserClone.StateManagers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import com.WhateverSoftware.LuftrauserClone.Objects.UserAirplane;
+import com.WhateverSoftware.LuftrauserClone.Objects.Airplanes.UserAirplane;
 
 public class KeyInputHandler implements KeyListener {	
 

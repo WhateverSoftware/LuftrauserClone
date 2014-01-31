@@ -1,7 +1,8 @@
-package com.WhateverSoftware.LuftrauserClone.AI;
+package com.WhateverSoftware.LuftrauserClone.AI.Ships;
 
 import java.awt.Point;
 
+import com.WhateverSoftware.LuftrauserClone.AI.AAI;
 import com.WhateverSoftware.LuftrauserClone.Objects.IShootingEntityAIView;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 

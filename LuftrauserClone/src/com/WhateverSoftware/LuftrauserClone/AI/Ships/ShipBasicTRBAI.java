@@ -1,4 +1,4 @@
-package com.WhateverSoftware.LuftrauserClone.AI;
+package com.WhateverSoftware.LuftrauserClone.AI.Ships;
 
 import com.WhateverSoftware.LuftrauserClone.Objects.IShootingEntityAIView;
 
