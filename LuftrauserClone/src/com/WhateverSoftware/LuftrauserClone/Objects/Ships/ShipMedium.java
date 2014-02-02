@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class ShipMedium extends AShip {
 
 	private static final int SPEED = 2;
-	private static final int COOLDOWN_PERIOD = 8;
+	private static final int COOLDOWN_PERIOD = 12;
 	private static final int HEALTH = 100;
 
 	public ShipMedium(int x, int y, IAI ai, int directionFacing) {
