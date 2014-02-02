@@ -35,8 +35,11 @@ public class KeyInputHandler implements InputProcessor {
 			case Input.Keys.X:
 				this.airplane.setShooting(true);
 				break;
+			case Input.Keys.SPACE:
+				Gdx.app.log("KeyInputHandler:KeyDown", "Reset UserAirplane to 100,100");
+				airplane.setLocation(100, 100);
 			default:
-				Gdx.app.log("KEYCODE", keyCode + "");
+				Gdx.app.log("KeyInputHandler:KeyDown", "Unhandled Key Code:"+ keyCode);
 				break;
 			}
 		}
@@ -58,7 +61,7 @@ public class KeyInputHandler implements InputProcessor {
 				this.airplane.setShooting(false);
 				break;
 			default:
-				Gdx.app.log("KEYCODE", keyCode + "");
+				Gdx.app.log("KeyInputHandler:KeyUp", "Unhandled Key Code:"+ keyCode);
 				break;
 			}
 		}

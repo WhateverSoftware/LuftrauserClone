@@ -35,7 +35,7 @@ public class Projectile implements IEntity {
 	}
 
 	@Override
-	public void update() {
+	public void update(float delta) {
 		this.move();
 	}
 

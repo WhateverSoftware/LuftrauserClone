@@ -13,10 +13,10 @@ public abstract class AShip extends AAutomatedShootingEntity{
 	/**
 	 * Call all of the actions that need to be performed in a game tick.
 	 */
-	public void update(){
+	public void update(float delta){
 		super.handleCooling();
 		this.turn();
-		this.move();
+		this.move(delta);
 		shoot(this.directionFacing);
 	}
 	

@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen implements Screen {
@@ -15,6 +16,7 @@ public class GameScreen implements Screen {
 
 	GameTickHandler gameTickHandler;
 
+	public static BitmapFont font;
 	@Override
 	public void show() {
 		Gdx.app.log("GameScreen:Show", "Creating Screen");
@@ -28,8 +30,9 @@ public class GameScreen implements Screen {
 		
 		UserAirplane uA = new UserAirplane(100,100,0);
 		gameTickHandler.register(uA);
-		KeyInputHandler kIA = new KeyInputHandler(uA, true);
-		Gdx.input.setInputProcessor(kIA);
+		Gdx.input.setInputProcessor(new KeyInputHandler(uA,true));
+		
+		font = new BitmapFont();
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class GameScreen implements Screen {
 
 		batch.begin();
 
-		gameTickHandler.updateEntities();
+		gameTickHandler.updateEntities(delta);
 		gameTickHandler.drawEntities(batch);
 
 		batch.end();

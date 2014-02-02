@@ -7,5 +7,5 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public interface IEntity {
 	public Point getLocation();
 	public void draw(SpriteBatch batch);
-	public void update();
+	public void update(float delta);
 }

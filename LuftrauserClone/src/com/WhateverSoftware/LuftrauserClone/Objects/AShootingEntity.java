@@ -5,10 +5,10 @@ import java.awt.geom.Point2D;
 
 import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntityView;
 
-public abstract class AShootingEntity implements IEntity, IShootingEntityAIView{
-	
-	protected final int TURN_SPEED = 1; //degrees
-	private final int COOLDOWN_PERIOD; //in ticks
+public abstract class AShootingEntity implements IEntity, IShootingEntityAIView {
+
+	protected final int TURN_SPEED = 1; // degrees
+	private final int COOLDOWN_PERIOD; // in ticks
 	private int cooldownCounter;
 	protected boolean coolingDown;
 	protected int x;
@@ -20,102 +20,111 @@ public abstract class AShootingEntity implements IEntity, IShootingEntityAIView{
 	protected boolean isShooting = false;
 	protected int health;
 	private IGameTickHandlerEntityView gth;
-	
-	public AShootingEntity(int x, int y, int cooldownPeriod, int directionFacing, int health){
-		this.x=x;
-		this.y=y;
+
+	public AShootingEntity(int x, int y, int cooldownPeriod, int directionFacing, int health) {
+		this.x = x;
+		this.y = y;
 		this.velx = 0;
 		this.vely = 0;
-		this.COOLDOWN_PERIOD=cooldownPeriod;
-		this.cooldownCounter=cooldownPeriod;
-		this.coolingDown=false;
+		this.COOLDOWN_PERIOD = cooldownPeriod;
+		this.cooldownCounter = cooldownPeriod;
+		this.coolingDown = false;
 		this.directionFacing = directionFacing;
 		this.health = health;
 	}
-	
+
 	public void setGameTickHandler(IGameTickHandlerEntityView gth) {
 		this.gth = gth;
 		gth.register(this);
 	}
-	
-	public void shoot(int direction){
-		if(!this.coolingDown && isShooting){
-			this.gth.register(new Projectile(this.x,this.y,direction));
-			this.coolingDown=true;
+
+	public void shoot(int direction) {
+		if (!this.coolingDown && isShooting) {
+			this.gth.register(new Projectile(this.x, this.y, direction));
+			this.coolingDown = true;
 		}
 	}
-	
-	protected void handleCooling(){
-		if(this.cooldownCounter==0){
-			this.coolingDown=false;
-			this.cooldownCounter=this.COOLDOWN_PERIOD;
+
+	protected void handleCooling() {
+		if (this.cooldownCounter == 0) {
+			this.coolingDown = false;
+			this.cooldownCounter = this.COOLDOWN_PERIOD;
 		}
-		if(coolingDown)
+		if (coolingDown)
 			this.cooldownCounter--;
 	}
-	
+
 	@Override
 	public Point getLocation() {
-		return new Point(x,y);
+		return new Point(x, y);
 	}
-	
+
+	public void setLocation(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
 	@Override
-	public int getDirectionFacing(){
+	public int getDirectionFacing() {
 		return this.directionFacing;
 	}
-	
+
 	/**
 	 * Move one tick based on the current velocity
 	 */
-	public void move() {
-		x += velx;
-		y += vely;
+	public void move(float delta) {
+		x += velx * delta;
+		y += vely * delta;
 	}
-	
+
 	/**
-	 * Uses input direction as direction of rotation for object.
-	 * 0 indicates no rotation.
-	 * @param direction - Indicates which direction of rotation. Only accepts 0, 1 (clockwise), and -1 (counter-clockwise).
+	 * Uses input direction as direction of rotation for object. 0 indicates no
+	 * rotation.
+	 * 
+	 * @param direction
+	 *            - Indicates which direction of rotation. Only accepts 0, 1
+	 *            (clockwise), and -1 (counter-clockwise).
 	 */
 	public void setTurning(int direction) {
-		if(direction == 1 || direction == -1 || direction == 0)
+		if (direction == 1 || direction == -1 || direction == 0)
 			turnDirection = direction;
 	}
-	
+
 	/**
-	 * This method turns the cannon for a ship.
-	 * For the plane, it turns the nose (so it also determines the change of movement on thrust).
+	 * This method turns the cannon for a ship. For the plane, it turns the nose
+	 * (so it also determines the change of movement on thrust).
 	 */
-	public void turn(){
-		this.directionFacing += (this.TURN_SPEED*this.turnDirection);
+	public void turn() {
+		this.directionFacing += (this.TURN_SPEED * this.turnDirection);
 	}
-	
+
 	/**
 	 * Changes whether the object is currently firing projectiles.
-	 * @param shooting - new boolean value to set for shooting.
+	 * 
+	 * @param shooting
+	 *            - new boolean value to set for shooting.
 	 */
 	public void setShooting(boolean shooting) {
 		isShooting = shooting;
 	}
-	
-	public void adjustHealth(int adjustment){
+
+	public void adjustHealth(int adjustment) {
 		this.health += adjustment;
 	}
-	
-	public int getHealth(){
+
+	public int getHealth() {
 		return this.health;
 	}
-	
-	public int getCooldownPeriod(){
+
+	public int getCooldownPeriod() {
 		return this.COOLDOWN_PERIOD;
 	}
-	
-	public boolean isCooling(){
+
+	public boolean isCooling() {
 		return this.coolingDown;
 	}
-	
-	public Point2D.Double getVelocity(){
-		return new Point2D.Double(this.velx,this.vely);
+
+	public Point2D.Double getVelocity() {
+		return new Point2D.Double(this.velx, this.vely);
 	}
 }
-
