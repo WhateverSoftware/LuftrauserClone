@@ -16,9 +16,10 @@ public class GameTickHandler implements IGameTickHandlerEntityView {
 	/**
 	 * Calls update for all entities attached to this handler.
 	 */
-	public void updateEntities(float delta) {
-		for (IEntity entity : this.entities) {
-			entity.update(delta);
+	public void updateEntities() {
+		for(int n = entities.size()-1;n>=0;n--){
+			IEntity entity = entities.get(n);
+			entity.update();
 		}
 	}
 	/**

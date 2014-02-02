@@ -29,7 +29,7 @@ public class GameScreen implements Screen {
 		camera.update();
 		
 		UserAirplane uA = new UserAirplane(100,100,0);
-		gameTickHandler.register(uA);
+		uA.setGameTickHandler(gameTickHandler);
 		Gdx.input.setInputProcessor(new KeyInputHandler(uA,true));
 		
 		font = new BitmapFont();
@@ -46,7 +46,7 @@ public class GameScreen implements Screen {
 
 		batch.begin();
 
-		gameTickHandler.updateEntities(delta);
+		gameTickHandler.updateEntities();
 		gameTickHandler.drawEntities(batch);
 
 		batch.end();

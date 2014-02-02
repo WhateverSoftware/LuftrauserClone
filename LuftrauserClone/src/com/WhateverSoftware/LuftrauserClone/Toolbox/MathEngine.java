@@ -7,8 +7,8 @@ import com.WhateverSoftware.LuftrauserClone.Objects.Airplanes.AAirplane;
 
 public class MathEngine {
 	//I'm just guessing with these. They can be adjusted once we get a visual representation working.
-	private static final double friction = 0.2;
-	private static final double gravity = 0.1;
+	private static final double friction = 0.01;
+	private static final double gravity = 0.2;
 
 	public static double degreesToRadians(int degree){
 		return degree * Math.PI / 180;
@@ -37,7 +37,7 @@ public class MathEngine {
 	public static Point2D.Double calcVelocity(double velx, double vely, double thrust, int direction) {
 		double radDirectionFacing = MathEngine.degreesToRadians(direction);
 		double thrustX = thrust * Math.cos(radDirectionFacing);
-		double thrustY = thrust * Math.sin(radDirectionFacing);
+		double thrustY = -thrust * Math.sin(radDirectionFacing);
 		
 		//adjust for friction
 		velx *= (1-friction);

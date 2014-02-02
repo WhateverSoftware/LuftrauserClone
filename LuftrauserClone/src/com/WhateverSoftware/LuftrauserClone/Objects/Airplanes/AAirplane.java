@@ -1,19 +1,18 @@
 package com.WhateverSoftware.LuftrauserClone.Objects.Airplanes;
 
 import java.awt.geom.Point2D;
-
-import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.WhateverSoftware.LuftrauserClone.Objects.AShootingEntity;
 import com.WhateverSoftware.LuftrauserClone.Objects.IEntity;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class AAirplane extends AShootingEntity implements IEntity {
 
-	public static final int MAX_VELOCITY = 5;
+	public static final int MAX_VELOCITY = 10;
 
-	private final int THRUST_SPEED = 1;
+	private final double THRUST_SPEED = .5;
 
 	private boolean isThrusting = false;
 
@@ -24,20 +23,16 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	/**
 	 * Call all of the actions that need to be performed in a game tick.
 	 */
-	public void update(float delta) {
+	public void update() {
 		super.handleCooling();
 		this.turn();
 		if (this.isThrusting) {
 			this.thrust();
-		} else {
-			// velocity degradation
-			if (y > 0) {
-				vely = vely - 1;
-			} else {
-				vely = 0;
-			}
 		}
-		this.move(delta);
+		else{
+			this.implementGravity();
+		}
+		this.move();
 		shoot(this.directionFacing);
 	}
 
@@ -57,16 +52,22 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	 * facing.
 	 */
 	public void thrust() {
-		Point2D.Double temp = MathEngine.calcVelocity(velx, velx, THRUST_SPEED, directionFacing);
-		velx += temp.getX();
-		vely += temp.getY();
+		Point2D.Double temp = MathEngine.calcVelocity(velx, vely, THRUST_SPEED, directionFacing);
+		velx = temp.getX();
+		vely = temp.getY();
 	}
-
-	@Override
-	public void draw(SpriteBatch batch) {
-		// will need some way to differentiate between plane textures
-
-		// Math here to rotate texture to match angle
-		batch.draw(Assets.assetManager.get("Planes/plane2.png", Texture.class), x, y, 122, 50);
+	
+	private void implementGravity(){
+		Point2D.Double temp = MathEngine.calcVelocity(velx, vely, 0, directionFacing);
+		velx = temp.getX();
+		vely = temp.getY();
+	}
+	
+	public void draw(SpriteBatch batch, Texture texture) {
+		Sprite sprite = new Sprite(texture);
+		sprite.setBounds(x, y, (int)(texture.getWidth()/3.0), (int)(texture.getHeight()/3.0));
+		sprite.setOrigin(sprite.getWidth()/2,sprite.getHeight()/4);
+		sprite.rotate(-directionFacing);
+		sprite.draw(batch);
 	}
 }

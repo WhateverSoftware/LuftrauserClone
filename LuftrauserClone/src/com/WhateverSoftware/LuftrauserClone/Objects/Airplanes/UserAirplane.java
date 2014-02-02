@@ -1,5 +1,9 @@
 package com.WhateverSoftware.LuftrauserClone.Objects.Airplanes;
 
+import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 
 public class UserAirplane extends AAirplane {
 
@@ -9,6 +13,11 @@ public class UserAirplane extends AAirplane {
 	public UserAirplane(int x, int y, int directionFacing) {
 		super(x, y, directionFacing, COOLDOWN_PERIOD, MAX_HEALTH);
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void draw(SpriteBatch batch) {
+		super.draw(batch,Assets.assetManager.get("Planes/plane2.png", Texture.class));
 	}
 
 }

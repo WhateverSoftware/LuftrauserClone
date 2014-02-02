@@ -7,7 +7,7 @@ import com.WhateverSoftware.LuftrauserClone.StateManagers.IGameTickHandlerEntity
 
 public abstract class AShootingEntity implements IEntity, IShootingEntityAIView {
 
-	protected final int TURN_SPEED = 1; // degrees
+	protected final int TURN_SPEED = 5; // degrees
 	private final int COOLDOWN_PERIOD; // in ticks
 	private int cooldownCounter;
 	protected boolean coolingDown;
@@ -72,9 +72,9 @@ public abstract class AShootingEntity implements IEntity, IShootingEntityAIView 
 	/**
 	 * Move one tick based on the current velocity
 	 */
-	public void move(float delta) {
-		x += velx * delta;
-		y += vely * delta;
+	public void move() {
+		x += velx;
+		y += vely;
 	}
 
 	/**
