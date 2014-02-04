@@ -30,7 +30,7 @@ public class AirplaneSuicideAI implements IAirplaneAI {
 		Point meLocation = me.getLocation();
 		double dx = (double)userLocation.getX() - (double)meLocation.getX();
 		double dy = (double)userLocation.getY() - (double)meLocation.getY();
-		int degree = MathEngine.radiansToDegrees(Math.atan2(dx, dy));
+		int degree = MathEngine.radiansToDegrees(Math.atan(dy/dx));
 		if(degree>me.getDirectionFacing())
 			me.setTurning(-1);
 		else if(degree<me.getDirectionFacing())
