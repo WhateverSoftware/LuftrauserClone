@@ -2,27 +2,38 @@ package com.WhateverSoftware.LuftrauserClone.AI.Airplanes;
 
 import java.awt.Point;
 
+import com.WhateverSoftware.LuftrauserClone.AI.AAI;
 import com.WhateverSoftware.LuftrauserClone.Objects.IShootingEntityAIView;
 import com.WhateverSoftware.LuftrauserClone.Toolbox.MathEngine;
 
-public class AirplaneSuicideAI implements IAirplaneAI {
-
-	private IShootingEntityAIView user;
-	private IShootingEntityAIView me;
+/**
+ * @author WhateverSoftware
+ * @class AirplaneSuicideAI
+ */
+public class AirplaneSuicideAI extends AAI implements IAirplaneAI {
 	
+	/**
+	 * @constructor - calls AAI constructor
+	 * @param user - The user's airplane
+	 * @param me - The entity this AI controls
+	 */
 	public AirplaneSuicideAI(IShootingEntityAIView user, IShootingEntityAIView me){
-		this.user=user;
-		this.me=me;
+		super(user,me);
 	}
 	
+	/**AirplaneSuicideAI.processActions()
+	 * Calls AirplaneSuicideAI.establishFlightManeuver()
+	 * Calls AirplaneSuicideAI.establishShooting()
+	 */
 	@Override
 	public void processActions() {
 		this.establishFlightManeuver();
 		this.establishShooting();
 	}
 
-	/* Directs the plane this AI controls towards the user and
-	 * thrusts to maximum acceleration.
+	/**AirplaneSuicideAI.establishFlightManeuver()
+	 * Directs the entity this AI controls towards the user's airplane
+	 * Thrusts
 	 */
 	@Override
 	public void establishFlightManeuver() {
@@ -38,7 +49,8 @@ public class AirplaneSuicideAI implements IAirplaneAI {
 		me.setThrust(true);
 	}
 
-	/* The suicideAI does not shoot.
+	/**AirplaneSuicideAI.establishShooting()
+	 * The AirplaneSuicideAI never calls for the entity it controls to shoot
 	 */
 	@Override
 	public void establishShooting() {

@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 public class Assets {
 	public static AssetManager assetManager;
 
+	/**Assets.loadArtAssets()
+	 * Loads all images
+	 */
 	public static void loadArtAssets() {
 		Assets.loadSkies();
 		Assets.loadClouds();
@@ -20,6 +23,9 @@ public class Assets {
 		Assets.assetManager.load("MainMenu/ExitGame.png", Texture.class);
 	}
 	
+	/**Assets.loadSkies()
+	 * Loads sky images
+	 */
 	public static void loadSkies(){
 		Assets.assetManager.load("Background/Backgrounds/sky01.png", Texture.class);
 		Assets.assetManager.load("Background/Backgrounds/sky02.png", Texture.class);
@@ -33,6 +39,9 @@ public class Assets {
 		Assets.assetManager.load("Background/Backgrounds/sky10.png", Texture.class);
 	}
 	
+	/**Assets.loadClouds()
+	 * Loads cloud images
+	 */
 	public static void loadClouds(){
 		Assets.assetManager.load("Background/Clouds/cloud1.png", Texture.class);
 		Assets.assetManager.load("Background/Clouds/cloud2.png", Texture.class);
@@ -43,6 +52,9 @@ public class Assets {
 		Assets.assetManager.load("Background/Clouds/cloud7.png", Texture.class);
 	}
 	
+	/**Assets.loadSkyLines()
+	 * Loads skyline images
+	 */
 	public static void loadSkyLines(){
 		Assets.assetManager.load("Background/Skylines/city1.png", Texture.class);
 		Assets.assetManager.load("Background/Skylines/city2.png", Texture.class);
@@ -56,6 +68,9 @@ public class Assets {
 		Assets.assetManager.load("Background/Skylines/pyramids.png", Texture.class);
 	}
 	
+	/**Assets.loadBoats()
+	 * Loads boat images
+	 */
 	public static void loadBoats(){
 		Assets.assetManager.load("Boats/pirateboat1.png", Texture.class);
 		Assets.assetManager.load("Boats/pirateboat2.png", Texture.class);
@@ -74,6 +89,9 @@ public class Assets {
 		Assets.assetManager.load("Boats/ship10.png", Texture.class);
 	}
 	
+	/**Assets.loadPlanes()
+	 * Loads plane images
+	 */
 	public static void loadPlanes(){
 		Assets.assetManager.load("Planes/plane1.png", Texture.class);
 		Assets.assetManager.load("Planes/plane2.png", Texture.class);
@@ -94,6 +112,9 @@ public class Assets {
 		Assets.assetManager.load("Planes/tail2.png", Texture.class);
 	}
 	
+	/**Assets.loadProjectiles()
+	 * Loads projectile images
+	 */
 	public static void loadProjectiles(){
 		Assets.assetManager.load("Projectiles/bomb1.png", Texture.class);
 		Assets.assetManager.load("Projectiles/bomb2.png", Texture.class);
@@ -101,6 +122,9 @@ public class Assets {
 		Assets.assetManager.load("Projectiles/bomb4.png", Texture.class);
 	}
 
+	/**Assets.loadSoundAssets()
+	 * Loads all sounds
+	 */
 	public static void loadSoundAssets() {
 		Assets.assetManager.load("Sounds/3shot.wav", Sound.class);
 		Assets.assetManager.load("Sounds/gattlingShoot.wav", Sound.class);
