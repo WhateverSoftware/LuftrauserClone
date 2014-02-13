@@ -12,7 +12,6 @@ public class UserAirplane extends AAirplane {
 	
 	public UserAirplane(int x, int y, int directionFacing) {
 		super(x, y, directionFacing, COOLDOWN_PERIOD, MAX_HEALTH);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
