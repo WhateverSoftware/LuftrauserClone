@@ -1,4 +1,4 @@
-package com.WhateverSoftware.LuftrauserClone.Screens;
+package com.WhateverSoftware.LuftrauserClone.Graphics.Screens;
 
 import com.WhateverSoftware.LuftrauserClone.Objects.Airplanes.UserAirplane;
 import com.WhateverSoftware.LuftrauserClone.StateManagers.GameTickHandler;

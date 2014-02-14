@@ -1,24 +1,31 @@
-package com.WhateverSoftware.LuftrauserClone.Screens;
+package com.WhateverSoftware.LuftrauserClone.Graphics.Screens;
 
-
-import com.WhateverSoftware.LuftrauserClone.LuftrauserGame;
-import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
-public class LoadingScreen implements Screen {
+public class MainMenuScreen implements Screen {
 	Stage stage;
+
+	BitmapFont font;
 
 	@Override
 	public void show() {
-		Gdx.app.log("LoadingScreen:Show", "Creating Screen");
+		Gdx.app.log("MainMenuScreen:Show", "Creating Screen");
 		stage = new Stage();
-		stage.addActor(new LoadingBar(stage.getWidth(), stage.getHeight()));
 
-		Assets.loadArtAssets();
-		Assets.loadSoundAssets();
+		// Add input listener to screen
+		stage.addListener(new MainMenuInput());
+		Gdx.input.setInputProcessor(stage);
+
+		// Creating UI
+		Table table = new Table();
+		table.setFillParent(true);
+		stage.addActor(table);
+
 	}
 
 	@Override
@@ -32,12 +39,7 @@ public class LoadingScreen implements Screen {
 		stage.act();
 		stage.draw();
 
-		if (Assets.assetManager.update()) {
-			// All assets are loaded - move to next screen
-			Gdx.app.log("LoadingScreen:AssetCheck", "Asset Loading Complete");
-
-			LuftrauserGame.game.setScreen(new GameScreen());
-		}
+		Table.drawDebug(stage);
 	}
 
 	@Override

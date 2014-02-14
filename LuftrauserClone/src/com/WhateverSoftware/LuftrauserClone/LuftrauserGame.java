@@ -1,7 +1,7 @@
 package com.WhateverSoftware.LuftrauserClone;
 
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
-import com.WhateverSoftware.LuftrauserClone.Screens.LoadingScreen;
+import com.WhateverSoftware.LuftrauserClone.Graphics.Screens.LoadingScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;

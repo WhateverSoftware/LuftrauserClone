@@ -1,4 +1,4 @@
-package com.WhateverSoftware.LuftrauserClone.Screens;
+package com.WhateverSoftware.LuftrauserClone.Graphics.Screens;
 
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.badlogic.gdx.graphics.Texture;
