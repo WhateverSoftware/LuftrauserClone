@@ -3,6 +3,10 @@ package com.WhateverSoftware.LuftrauserClone.Graphics.Screens;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
+/**
+ * @author WhateverSoftware
+ * @class MainMenuInput
+ */
 public class MainMenuInput extends InputListener {
 	public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 		return true;

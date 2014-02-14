@@ -6,9 +6,19 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+/**
+ * @author WhateverSoftware
+ * @class LoadingBar
+ */
 public class LoadingBar extends Actor {
 	BitmapFont font;
 
+	/**
+	 * @constructor -Calls LoadingBar.setPosition
+	 * 				-Sets the dimension of this actor
+	 * @param width - width of this actor
+	 * @param height - height of this actor
+	 */
 	public LoadingBar(float width, float height) {
 		setPosition(0, 0);
 		setWidth(width);
@@ -21,6 +31,9 @@ public class LoadingBar extends Actor {
 
 	}
 
+	/**LoadingBar.draw()
+	 * Draw the loading bar
+	 */
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		if (Assets.assetManager.isLoaded("Background/Backgrounds/sky01.png")) {
 			batch.draw(Assets.assetManager.get("Background/Backgrounds/sky01.png", Texture.class), getX(), getY(), getWidth(), getHeight());

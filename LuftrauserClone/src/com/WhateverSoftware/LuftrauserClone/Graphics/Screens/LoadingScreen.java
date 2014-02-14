@@ -8,9 +8,16 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/**
+ * @author WhateverSoftware
+ * @class LoadingScreen
+ */
 public class LoadingScreen implements Screen {
 	Stage stage;
 
+	/**LoadingScreen.show()
+	 * Display the Loading Screen
+	 */
 	@Override
 	public void show() {
 		Gdx.app.log("LoadingScreen:Show", "Creating Screen");
@@ -21,11 +28,19 @@ public class LoadingScreen implements Screen {
 		Assets.loadSoundAssets();
 	}
 
+	/**LoadingScreen.resize()
+	 * Replaces the current dimensions with a new one
+	 * @param width - The replacement width value
+	 * @param height - The replacement height value
+	 */
 	@Override
 	public void resize(int width, int height) {
 		stage.setViewport(width, height, true);
 	}
 
+	/**LoadingScreen.render()
+	 * Updates the current screen with the new data
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
