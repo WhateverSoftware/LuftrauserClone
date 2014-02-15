@@ -46,11 +46,11 @@ public class Projectile implements IEntity {
 	 * Draws this projectile to the screen in the correct orientation
 	 */
 	@Override
-	public void draw(SpriteBatch batch) {
+	public void draw(SpriteBatch batch,int xOffset,int yOffset) {
 		//BULLETS ARE NOT THE SAME AS BOATS! FIX!!!!!!!!!!
 		Texture texture = Assets.assetManager.get("Boats/ship1.png", Texture.class);
 		Sprite sprite = new Sprite(texture);
-		sprite.setBounds((int)x, (int)y, (int)(texture.getWidth()/3.0), (int)(texture.getHeight()/3.0));
+		sprite.setBounds((int)x-xOffset, (int)y-yOffset, (int)(texture.getWidth()/3.0), (int)(texture.getHeight()/3.0));
 		sprite.setOrigin(sprite.getWidth()/2,sprite.getHeight()/4);
 		sprite.rotate(-direction);
 		sprite.draw(batch);

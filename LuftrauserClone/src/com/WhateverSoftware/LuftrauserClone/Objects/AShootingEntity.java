@@ -125,6 +125,8 @@ public abstract class AShootingEntity implements IEntity, IShootingEntityAIView 
 	public void move() {
 		x += velx;
 		y += vely;
+		if(y<0)
+			y=0;
 	}
 
 	/**AShootingEntity.setTurning()

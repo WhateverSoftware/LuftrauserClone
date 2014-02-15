@@ -35,9 +35,9 @@ public class GameTickHandler implements IGameTickHandlerEntityView {
 	/**GameTickHandler.drawEntities()
 	 * Calls draw for all entities attached to this handler.
 	 */
-	public void drawEntities(SpriteBatch batch) {
+	public void drawEntities(SpriteBatch batch,int xOffset,int yOffset) {
 		for (IEntity entity : this.entities) {
-			entity.draw(batch);
+			entity.draw(batch,xOffset,yOffset);
 		}
 	}
 
@@ -49,3 +49,4 @@ public class GameTickHandler implements IGameTickHandlerEntityView {
 		this.entities.add(entity);
 	}
 }
+

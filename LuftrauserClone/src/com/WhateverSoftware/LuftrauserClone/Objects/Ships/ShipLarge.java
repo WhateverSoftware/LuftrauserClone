@@ -35,11 +35,11 @@ public class ShipLarge extends AShip {
 	 * Draws this entity in the appropriate orientation
 	 */
 	@Override
-	public void draw(SpriteBatch batch) {
+	public void draw(SpriteBatch batch,int xOffset,int yOffset) {
 		// will need some way to differentiate between boat textures
 
 		// Math here to rotate texture to match direction facing
-		batch.draw(Assets.assetManager.get("Boats/ship6.png", Texture.class), x, y);
+		batch.draw(Assets.assetManager.get("Boats/ship6.png", Texture.class), xOffset-x, yOffset-y);
 	}
 
 }

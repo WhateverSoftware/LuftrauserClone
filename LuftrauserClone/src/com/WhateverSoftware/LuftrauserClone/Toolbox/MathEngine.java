@@ -15,7 +15,7 @@ public class MathEngine {
 	private static final double friction = 0.01;
 	
 	//Value velocity is weighted by in the +y direction
-	private static final double gravity = 0.2;
+	private static final double gravity = 0.15;
 
 	/**MathEngine.degreesToRadians()
 	 * Takes an angle in degrees and converts it to it's radian counterpart

@@ -30,8 +30,8 @@ public class UserAirplane extends AAirplane {
 	 * Draws this entity's graphics in the appropriate orientation
 	 */
 	@Override
-	public void draw(SpriteBatch batch) {
-		super.draw(batch,Assets.assetManager.get("Planes/plane2.png", Texture.class));
+	public void draw(SpriteBatch batch,int xOffset, int yOffset) {
+		super.draw(batch,xOffset,yOffset,Assets.assetManager.get("Planes/plane2.png", Texture.class));
 	}
 
 }

@@ -12,10 +12,10 @@ public class Assets {
 	 */
 	public static void loadArtAssets() {
 		Assets.loadSkies();
+		Assets.loadPlanes();
 		Assets.loadClouds();
 		Assets.loadSkyLines();
 		Assets.loadBoats();
-		Assets.loadPlanes();
 		Assets.loadProjectiles();
 
 		Assets.assetManager.load("MainMenu/PlayGame.png", Texture.class);

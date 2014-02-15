@@ -13,7 +13,7 @@ public interface IEntity {
 	public Point getLocation();
 	
 	//All entities have a graphical representation
-	public void draw(SpriteBatch batch);
+	public void draw(SpriteBatch batch, int xOffset, int yOffset);
 	
 	//All entities can be updated
 	public void update();

@@ -83,9 +83,9 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	/**AAirplane.draw()
 	 * Draws this entity onto the screen in the proper orientation
 	 */
-	public void draw(SpriteBatch batch, Texture texture) {
+	public void draw(SpriteBatch batch, int xOffset, int yOffset, Texture texture) {
 		Sprite sprite = new Sprite(texture);
-		sprite.setBounds(x, y, (int)(texture.getWidth()/3.0), (int)(texture.getHeight()/3.0));
+		sprite.setBounds(x-xOffset, y-yOffset, (int)(texture.getWidth()/3.0), (int)(texture.getHeight()/3.0));
 		sprite.setOrigin(sprite.getWidth()/2,sprite.getHeight()/4);
 		sprite.rotate(-directionFacing);
 		sprite.draw(batch);
