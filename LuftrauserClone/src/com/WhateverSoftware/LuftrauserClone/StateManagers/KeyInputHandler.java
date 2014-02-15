@@ -57,7 +57,6 @@ public class KeyInputHandler implements InputProcessor {
 				break;
 			case Input.Keys.X://if the user pressed the 'x' key
 				//Set the target entity's shooting value to true
-				System.out.println(airplane.getLocation().getX()+","+airplane.getLocation().getY());
 				this.airplane.setShooting(true);
 				break;
 			case Input.Keys.SPACE://if the user pressed the 'space' key
