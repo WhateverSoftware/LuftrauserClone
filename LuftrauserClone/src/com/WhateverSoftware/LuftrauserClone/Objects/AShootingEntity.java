@@ -132,8 +132,8 @@ public abstract class AShootingEntity implements IEntity, IShootingEntityAIView 
 	/**AShootingEntity.setTurning()
 	 * Uses input direction as direction of rotation for object. 0 indicates no rotation.
 	 * @param direction
-	 *            - Indicates which direction of rotation. Only accepts 0, 1
-	 *            (clockwise), and -1 (counter-clockwise).
+	 *            - Indicates which direction of rotation. Only accepts 0, -1
+	 *            (clockwise), and 1 (counter-clockwise).
 	 */
 	public void setTurning(int direction) {
 		if (direction == 1 || direction == -1 || direction == 0)
@@ -146,6 +146,7 @@ public abstract class AShootingEntity implements IEntity, IShootingEntityAIView 
 	 */
 	public void turn() {
 		this.directionFacing += (this.TURN_SPEED * this.turnDirection);
+		this.directionFacing = (this.directionFacing+360)%360;
 	}
 
 	/**AShootingEntity.setShooting()

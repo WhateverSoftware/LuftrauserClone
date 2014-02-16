@@ -53,6 +53,8 @@ public abstract class AAdvancedTargettingShipAI extends AAI implements IShipAI{
 		//Set the idealDirection for this AI to the projected angle of the system in degrees
 		int projectedAngle = MathEngine.radiansToDegrees(Math.atan((projectedLocation.getY()-userLocation.getY())/(projectedLocation.getX()-userLocation.getX())));
 		this.idealDirection = projectedAngle;
+		if(this.idealDirection<0)
+			this.idealDirection += 180;
 		
 		//Take the direction of the controlled entity
 		int directionFacing = super.me.getDirectionFacing();

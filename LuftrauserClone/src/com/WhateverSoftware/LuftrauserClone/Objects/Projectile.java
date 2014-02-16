@@ -52,7 +52,7 @@ public class Projectile implements IEntity {
 		Sprite sprite = new Sprite(texture);
 		sprite.setBounds((int)x-xOffset, (int)y-yOffset, (int)(texture.getWidth()/3.0), (int)(texture.getHeight()/3.0));
 		sprite.setOrigin(sprite.getWidth()/2,sprite.getHeight()/4);
-		sprite.rotate(-direction);
+		sprite.rotate(direction);
 		sprite.draw(batch);
 	}
 
@@ -67,7 +67,7 @@ public class Projectile implements IEntity {
 	public void move(){
 		double radDirection = MathEngine.degreesToRadians(direction);
 		this.x += Projectile.PROJECTILE_SPEED * Math.cos(radDirection);
-		this.y -= Projectile.PROJECTILE_SPEED * Math.sin(radDirection);
+		this.y += Projectile.PROJECTILE_SPEED * Math.sin(radDirection);
 	}
 
 }

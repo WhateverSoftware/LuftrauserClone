@@ -36,10 +36,7 @@ public class ShipSmall extends AShip {
 	 */
 	@Override
 	public void draw(SpriteBatch batch, int xOffset, int yOffset) {
-		// will need some way to differentiate between boat textures
-
-		// Math here to rotate texture to match direction facing
-		batch.draw(Assets.assetManager.get("Boats/ship2.png", Texture.class), xOffset-x, yOffset-y);
+		super.draw(batch,xOffset,yOffset,Assets.assetManager.get("Boats/ship2.png", Texture.class));
 	}
 
 

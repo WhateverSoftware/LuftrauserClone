@@ -1,7 +1,11 @@
 package com.WhateverSoftware.LuftrauserClone.Objects.Ships;
 
 import com.WhateverSoftware.LuftrauserClone.AI.IAI;
+import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.WhateverSoftware.LuftrauserClone.Objects.AAutomatedShootingEntity;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * @author WhateverSoftware
@@ -22,13 +26,14 @@ public abstract class AShip extends AAutomatedShootingEntity{
 	 */
 	public AShip(int x, int y, IAI ai, int speed, int directionFacing, int cooldownPeriod, int health){
 		super(x,y,ai, cooldownPeriod,directionFacing,health);
-		this.velx=speed;
+		this.velx=0;
 	}
 	
 	/**AShip.update()
 	 * Call all of the actions that need to be performed in a game tick.
 	 */
 	public void update(){
+		super.runAI();
 		super.handleCooling();
 		this.turn();
 		this.move();
@@ -47,5 +52,13 @@ public abstract class AShip extends AAutomatedShootingEntity{
 	@Override
 	public void setThrust(boolean b){
 		//right now nothing FIX LATER
+	}
+
+	public void draw(SpriteBatch batch,int xOffset,int yOffset,Texture texture) {
+		Sprite sprite = new Sprite(texture);
+		sprite.setBounds(x-xOffset, y-yOffset, texture.getWidth(), texture.getHeight());
+		//sprite.setOrigin(sprite.getWidth()/2,sprite.getHeight()/4);
+		//sprite.rotate(-directionFacing);
+		sprite.draw(batch);
 	}
 }

@@ -49,7 +49,7 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 			this.implementGravity();
 		}
 		this.move();
-		shoot(this.directionFacing);
+		shoot(-this.directionFacing);
 	}
 
 	/**AAirplane.setThrust()

@@ -31,17 +31,19 @@ public abstract class ABasicTargettingShipAI extends AAI implements IShipAI {
 		Point meLocation = super.me.getLocation();
 		
 		//Take the x and y components of the distance between the user and the controlled entity
-		double dx = (double)userLocation.getX()/(double)meLocation.getY();
-		double dy = (double)userLocation.getY()/(double)meLocation.getY();
+		double dx = (double)userLocation.getX() - (double)meLocation.getX();
+		double dy = (double)userLocation.getY() - (double)meLocation.getY();
 		
 		//Take the angle between the user and the controlled entity
 		int degree = MathEngine.radiansToDegrees(Math.atan(dy/dx));
-		
+		if(degree<0)
+			degree += 180;
+
 		//Have the controlled entity turn towards the user
 		if(degree>super.me.getDirectionFacing())
-			super.me.setTurning(-1);
-		else if(degree<super.me.getDirectionFacing())
 			super.me.setTurning(1);
+		else if(degree<super.me.getDirectionFacing())
+			super.me.setTurning(-1);
 		else
 			super.me.setTurning(0);
 	}

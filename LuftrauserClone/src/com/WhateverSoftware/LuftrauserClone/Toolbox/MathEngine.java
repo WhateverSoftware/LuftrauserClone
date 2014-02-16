@@ -135,7 +135,7 @@ public class MathEngine {
 			//increment the next point to test
 			x1 += dx1;
 			x2 += dy1;
-		}while(!(Math.abs(ticks1-ticks2)<=1));//repeat this process until the time difference is close to 0
+		}while(!(Math.abs(ticks1-ticks2)<=20));//repeat this process until the time difference is close to 0
 		
 		//Instantiate a point representing the projected location
 		Point projectedLocation = new Point((int)sharedLocation.getX(),(int)sharedLocation.getY());

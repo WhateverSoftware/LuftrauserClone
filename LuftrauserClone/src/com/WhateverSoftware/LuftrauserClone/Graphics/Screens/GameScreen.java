@@ -1,7 +1,10 @@
 package com.WhateverSoftware.LuftrauserClone.Graphics.Screens;
 
+import com.WhateverSoftware.LuftrauserClone.AI.IAI; //remove later
+import com.WhateverSoftware.LuftrauserClone.AI.Ships.*; //remove later
 import com.WhateverSoftware.LuftrauserClone.Graphics.Assets;
 import com.WhateverSoftware.LuftrauserClone.Objects.Airplanes.UserAirplane;
+import com.WhateverSoftware.LuftrauserClone.Objects.Ships.*; //remove later
 import com.WhateverSoftware.LuftrauserClone.StateManagers.GameTickHandler;
 import com.WhateverSoftware.LuftrauserClone.StateManagers.KeyInputHandler;
 import com.badlogic.gdx.Gdx;
@@ -48,6 +51,10 @@ public class GameScreen implements Screen{
 		this.userY = Gdx.graphics.getHeight()/2;
 		uA = new UserAirplane(this.userX,this.userY,0);
 		uA.setGameTickHandler(gameTickHandler);
+		AShip s = new ShipSmall(0,0,null,10);
+		IAI ai = new ShipAdvancedTRBAI(uA,s);
+		s.setAI(ai);
+		s.setGameTickHandler(gameTickHandler);
 		Gdx.input.setInputProcessor(new KeyInputHandler(uA,true));
 		
 		font = new BitmapFont();
@@ -80,7 +87,7 @@ public class GameScreen implements Screen{
 		
 		if (Assets.assetManager.isLoaded("Background/Backgrounds/sky01.png")) {
 			batch.draw(Assets.assetManager.get("Background/Backgrounds/sky01.png", Texture.class), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-			Texture skyline = Assets.assetManager.get("Background/Skylines/mountains1.png", Texture.class);
+			Texture skyline = Assets.assetManager.get("Background/Skylines/city1.png", Texture.class);
 			
 			//Draw skylines
 			int skylineWidth = skyline.getWidth()*4;

@@ -11,7 +11,7 @@ import com.WhateverSoftware.LuftrauserClone.Objects.IShootingEntityAIView;
 public class ShipBasicSlowAI extends ABasicTargettingShipAI {
 
 	//The rate that the controlled entity fires projectiles
-	private final double SHOOTING_RATE = 0.1;
+	private final double SHOOTING_RATE = .02;
 	
 	/**
 	 * @constructor - Calls ABasicTargettingShipAI constructor
@@ -29,10 +29,12 @@ public class ShipBasicSlowAI extends ABasicTargettingShipAI {
 	@Override
 	public void handleShooting() {
 		boolean isCooling = super.me.isCooling();
-		if(!isCooling&&Math.random()<=this.SHOOTING_RATE)
+		if(!isCooling&&Math.random()<=this.SHOOTING_RATE){
 			super.me.setShooting(true);
-		else
+		}
+		else{
 			super.me.setShooting(false);
+		}
 	}
 	
 	/**ShipBasicSlowAI.processActions()
