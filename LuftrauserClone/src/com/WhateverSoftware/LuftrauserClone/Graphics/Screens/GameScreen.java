@@ -52,7 +52,7 @@ public class GameScreen implements Screen{
 		uA = new UserAirplane(this.userX,this.userY,0);
 		uA.setGameTickHandler(gameTickHandler);
 		AShip s = new ShipSmall(0,0,null,10);
-		IAI ai = new ShipAdvancedTRBAI(uA,s);
+		IAI ai = new ShipBasicTRBAI(uA,s);
 		s.setAI(ai);
 		s.setGameTickHandler(gameTickHandler);
 		Gdx.input.setInputProcessor(new KeyInputHandler(uA,true));
@@ -85,16 +85,15 @@ public class GameScreen implements Screen{
 		
 		batch.begin();
 		
-		if (Assets.assetManager.isLoaded("Background/Backgrounds/sky01.png")) {
-			batch.draw(Assets.assetManager.get("Background/Backgrounds/sky01.png", Texture.class), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-			Texture skyline = Assets.assetManager.get("Background/Skylines/city1.png", Texture.class);
-			
-			//Draw skylines
+		if (Assets.assetManager.isLoaded("Background/Backgrounds/sky02.png")) {
+			batch.draw(Assets.assetManager.get("Background/Backgrounds/sky02.png", Texture.class), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			Texture skyline = Assets.assetManager.get("Background/Skylines/mountains1.png", Texture.class);
+			//Draw skylines			
+			int relativeMin = this.userX-Gdx.graphics.getWidth()/2;
+			int relativeMax = this.userX+Gdx.graphics.getWidth();
 			int skylineWidth = skyline.getWidth()*4;
 			int skylineHeight = skyline.getHeight()*4;
 			int xPos = this.userX-(this.userX%skylineWidth);
-			int relativeMin = this.userX-Gdx.graphics.getWidth()/2;
-			int relativeMax = this.userX+Gdx.graphics.getWidth();
 			while(xPos>relativeMin)
 				xPos-=skylineWidth;
 			while(xPos<relativeMax){

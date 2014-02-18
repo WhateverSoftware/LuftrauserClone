@@ -31,7 +31,7 @@ public class UserAirplane extends AAirplane {
 	 */
 	@Override
 	public void draw(SpriteBatch batch,int xOffset, int yOffset) {
-		super.draw(batch,xOffset,yOffset,Assets.assetManager.get("Planes/plane2.png", Texture.class));
+		super.draw(batch,xOffset,yOffset,Assets.assetManager.get("Planes/plane3.png", Texture.class));
 	}
 
 }
