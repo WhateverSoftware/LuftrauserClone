@@ -65,6 +65,7 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	 * thrusting, the velocity will be increased in the direction the plane is
 	 * facing.
 	 */
+	@Override
 	public void thrust() {
 		Point2D.Double temp = MathEngine.calcVelocity(velx, vely, THRUST_SPEED, directionFacing);
 		velx = temp.getX();
