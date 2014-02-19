@@ -22,6 +22,9 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	
 	private boolean isThrusting = false;
 
+	//The ai state of the plane
+	protected AAirplaneStateEnum aiState;
+	
 	/**
 	 * @constructor -Calls AShootingEntity constructor
 	 * @param x - x-position of this entity
@@ -65,6 +68,7 @@ public abstract class AAirplane extends AShootingEntity implements IEntity {
 	 * thrusting, the velocity will be increased in the direction the plane is
 	 * facing.
 	 */
+	@Override
 	public void thrust() {
 		Point2D.Double temp = MathEngine.calcVelocity(velx, vely, THRUST_SPEED, directionFacing);
 		velx = temp.getX();
